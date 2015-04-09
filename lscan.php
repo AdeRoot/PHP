@@ -62,15 +62,15 @@ foreach(array_keys($opts) as $opt) switch($opt) {
 	  $lista = file_get_contents($opts["l"], "r");
 	  $x = array_filter(explode("\n", $lista));
 	  foreach($x as $dominio) {
-	  	  $valor = strpos($dominio, "=");
-	  	  $xpt = substr($dominio, 0, $valor);
-	  	  foreach($passwd as $passwd1) {
-	  	  $domain = $xpt.$passwd1;
-	  	  echo $domain."=>";
-	      for($i=0; $i <=$tr=count($domain)-1; $i++) {
+	   $valor = strpos($dominio, "=");
+	    $xpt = substr($dominio, 0, $valor);
+	   foreach($passwd as $passwd1) {
+	   $domain = $xpt.$passwd1;
+	   echo $domain."=>";
+	  for($i=0; $i <=$tr=count($domain)-1; $i++) {
 	      post($domain);
-	      }
-	    }
+	         }
+	     }
 	   }
 	   break;
 
@@ -91,10 +91,10 @@ foreach(array_keys($opts) as $opt) switch($opt) {
 	  	  $domain = $xpt. "=".$rfi;
 	  	  echo $domain."=>";
 	      for($i=0; $i <=$tr=count($domain)-1; $i++) {
-   post($domain);
-    }
-   }
- }
+          post($domain);
+                         }
+                }
+         }
 
     function post($domain) {
     if(preg_match("@http://@", $dominio)) {
