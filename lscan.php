@@ -41,6 +41,7 @@ error_reporting(0);
 
 $opts = getopt("hd:l:r:i:");
 foreach(array_keys($opts) as $opt) switch($opt) {
+	
           case "h":
           help();
           break;
