@@ -74,7 +74,7 @@ foreach(array_keys($opts) as $opt) switch($opt) {
 	   }
 	   break;
 
-	   case "r";
+	  case "r";
 	  $dominio = $opts["r"];
 	  $valor = strpos($dominio, "=");
 	  $xpt = substr($dominio, 0, $valor);
