@@ -83,7 +83,7 @@ foreach(array_keys($opts) as $opt) switch($opt) {
 	  $x = array_filter(explode("\n", $lista));
 	  foreach($x as $dominio) {
 	  $valor = strpos($dominio, "=");
-           $xpt = substr($dominio, 0, $valor);
+          $xpt = substr($dominio, 0, $valor);
  	  $domain = $xpt. "=".$rfi;
 	  for($i=0; $i <=$tr=count($domain)-1; $i++) {
           post($domain);
