@@ -113,8 +113,8 @@ $result = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 fclose($fp);
 if($result == 200 || $result == 201) {
-    echo "Create Sucessful\n\n";
-   file_put_contents("createshell.txt", $site."\n", FILE_APPEND);
+    echo "Created Successfully\n\n";
+   file_put_contents("createdshell.txt", $site."\n", FILE_APPEND);
 } else {
   echo "Failed\n\n";
   }
