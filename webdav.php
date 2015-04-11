@@ -114,7 +114,7 @@ curl_close($ch);
 fclose($fp);
 if($result == 200 || $result == 201) {
     echo "Created Successfully\n\n";
-   file_put_contents("createdshell.txt", $site."\n", FILE_APPEND);
+   file_put_contents("wbshells.txt", $site."\n", FILE_APPEND);
 } else {
   echo "Failed\n\n";
   }
