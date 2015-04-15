@@ -2,7 +2,6 @@
 /*
 Coded by AdeRoot 
 Simples scanner LFI - RFI
-Single - Massa
 Greetz:
 Default, Mathew, TheShow
 */
