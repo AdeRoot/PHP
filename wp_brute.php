@@ -12,10 +12,10 @@ error_reporting(0);
  
 class Wp{
  
-        public $host;
-        public $user;
-        public $open;
-        public $lista;
+        private $host;
+        private $user;
+        private $open;
+        private $lista;
  
    public function banner() {
     echo("
